@@ -1776,6 +1776,14 @@ void send_input_JSON(int fd, int input_number)
                             pglobal->in[input_number].in_formats[i].supportedResolutions[j].height);
                 }
             }
+            /*
+             * If we didn't find a resolution, still need to generate valid JSON
+             */
+            if (resolutionsStringLength == 0) {
+                resolutionsStringLength = sizeof("");
+                resolutionsString = calloc(resolutionsStringLength, sizeof(char*));
+                sprintf(resolutionsString, "");
+            }
 
             sprintf(buffer + strlen(buffer),
                     "{\n"
