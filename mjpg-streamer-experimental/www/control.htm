@@ -137,7 +137,7 @@
                         .attr("class", "slider")
                         .attr("type", "range")
                         .attr("id", "slider-"+item.id)
-                        .bind("onchange", function() {setControl(dest, plugin_id, item.id, item.group, $(this).val());})
+                        .bind("change", function() {setControl(dest, plugin_id, item.id, item.group, $(this).val());})
                         .appendTo("#td_ctrl_"+suffix+"_"+plugin_id+"_"+item.group+"-"+item.id);
                     }
                   } else if (item.type == 2) { // boolean type controls
@@ -224,7 +224,7 @@
 		    		}
 	    		)
 	    		
-	    		$( "#tabs" ).tabs();
+	    		// $( "#tabs" ).tabs();
 	    	}
 	    );
 
@@ -253,18 +253,14 @@
     </script>
 
     <div class="flex-container">
-      <div class="flex-child">
+      <div>
         <img src="./?action=stream" alt="Camera stream" />
       </div>
-      <div class="flex-child">
-        <div id="tabs">
-          <ul id="ul_tabs">
-          </ul>
-          <table id="controltable_in-0"></table>
-          <button onclick="console.log('Save')">Save</button>
-          <button onclick="console.log('Reset')">Reset</button>
-          <button onclick="console.log('Restore')">Restore</button>
-        </div>
+      <div>
+        <table id="controltable_in-0"></table>
+        <button onclick="console.log('Save')">Save</button>
+        <button onclick="console.log('Reset')">Reset</button>
+        <button onclick="console.log('Restore')">Restore</button>
       </div>
     </div>
 
