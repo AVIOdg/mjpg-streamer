@@ -135,6 +135,7 @@
                         .attr("max", item.max)
                         .attr("step", item.step)
                         .attr("class", "slider")
+                        .attr("type", "range")
                         .attr("id", "slider-"+item.id)
                         .bind("onchange", function() {setControl(dest, plugin_id, item.id, item.group, $(this).val());})
                         .appendTo("#td_ctrl_"+suffix+"_"+plugin_id+"_"+item.group+"-"+item.id);
@@ -200,8 +201,8 @@
                         $("<table/>").attr("id", "controltable_in-"+input.id).appendTo("#controldiv_in-"+input.id);
 		    		}
 	    		)
-	    		
-	    		$.each(data.outputs, 
+
+	    		$.each(data.outputs,
 	    			function(i,output){
 		        		$("<li/>").attr("id", "li_out-"+output.id).appendTo("#ul_tabs");
 						$("<a/>").attr("href", "#controldiv_out-"+output.id)
@@ -217,7 +218,7 @@
 		    		}
 	    		)
 	    		
-	    		$.each(data.outputs, 
+	    		$.each(data.outputs,
 	    			function(i,output){
 	    				addControl(output.id, "out");
 		    		}
@@ -252,7 +253,15 @@
     </script>
     
     <div id="tabs">
-		<ul id="ul_tabs"></ul>
+      <div class="flex-container">
+        <div class="flex-child">
+          <img src="./?action=stream" alt="Camera stream" />
+        </div>
+        <div class="flex-child">
+          <ul id="ul_tabs">
+          </ul>
+        </div>
+      </div>
   	</div>
 
   </body>
