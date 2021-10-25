@@ -148,6 +148,7 @@
                         .attr("max", item.max)
                         .attr("step", item.step)
                         .attr("class", "slider")
+                        .attr("style", "width: 100%")
                         .attr("type", "range")
                         .attr("id", "slider-"+item.id)
                         .bind("change", function() {setControl(dest, plugin_id, item.id, item.group, $(this).val());})
@@ -277,11 +278,11 @@
       <div style="padding: 1rem">
         <img src="./?action=stream" alt="Camera stream" />
       </div>
-      <div style="padding: 1rem">
-        <table id="controltable_in-0" style="margin: 0 0 1rem 0"></table>
-        <button onclick="save()">Save</button>
-        <button onclick="reset()">Reset</button>
-        <button onclick="restore()">Restore</button>
+      <div style="padding: 1rem; font-family: Roboto, sans-serif">
+        <table id="controltable_in-0" style="margin: 0 0 1rem 0; font-size: 20px; width: 100%"></table>
+        <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="save()">Save</button>
+        <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="reset()">Reset</button>
+        <button style="font-size: 24px" onclick="restore()">Restore</button>
       </div>
     </div>
 
