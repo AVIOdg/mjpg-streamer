@@ -22,9 +22,16 @@
 
   </head>
   <body style="overflow-y: auto;">
-    <script type="text/javascript"> 
-    		
-		function setControl(dest, plugin, id, group, value) {
+    <script type="text/javascript">
+      const defaults = {
+        Brightness: 50,
+        Contrast: 50,
+        Saturation: 50,
+        Hue: 50
+      };
+      let originalValues = [];
+
+      function setControl(dest, plugin, id, group, value) {
           $.get('./?action=command&dest=' +		dest +
           						'&plugin=' +	plugin+
           						'&id='+ 		id + 
@@ -84,6 +91,7 @@
             function(data) {
               $.each(data.controls, function(i,item){
                 if(permittedOptions.includes(item.name)) {
+                  originalValues.push(item);
                   $('<tr/>').attr("id", "tr_"+suffix+"_"+plugin_id+"_"+item.group+"_"+item.id).appendTo("#controltable_"+suffix+"-"+plugin_id);
                   // BUTTON type controls does not have a label
                   if (item.type == 4) {
@@ -228,28 +236,19 @@
 	    	}
 	    );
 
-       $(function() {
-			
-		});
-        /*$.getJSON("input.json",
-          function(data) {
-          	$.each(data.formats, function(i,item){
-          	  if (item.current == "true") {
-          	  $("<select/>")
-                  .attr("id", "select-resolution")
-                  .attr("style", "width: 100%;")
-                  .change(function(){setResolution($(this).val());})
-                  .appendTo("#resolutions");
-           	    $.each(item.resolutions, function(val,res){
-           	    	if (item.currentResolution == val) {
-                      $("#select-resolution").append($('<option></option>').attr("selected", "selected").val(val).html(res));
-                    } else {
-                      $("#select-resolution").append($('<option></option>').val(val).html(res));
-                    }
-           	    });
-          	  }
-          	});
-          });*/
+      function save() {
+        $.post('save')
+      }
+      function reset() {
+
+      }
+      function restore() {
+        originalValues.forEach((item) => {
+          $(`#slider-${item.id}`).val(item.value);
+          setControl(0, 0, item.id, item.group, item.value);
+        })
+      }
+
     </script>
 
     <div class="flex-container">
