@@ -239,12 +239,17 @@
       function save() {
         console.log('Saving');
         // $.post('something?')
+        originalValues.forEach((item) => {
+          item.value = $(`#slider-${item.id}`).val();
+        })
       }
       function reset() {
         console.log('Reset');
         Object.entries(defaults).forEach(([key, value]) => {
           const item = originalValues.find((val) => key === val.name);
-          setValue(item, value);
+          if (item) {
+            setValue(item, value);
+          }
         })
 
       }
@@ -263,11 +268,14 @@
 
     <div class="flex-container">
       <div>
+        <img src="./logo.png" />
+      </div>
+      <div>
         <img src="./?action=stream" alt="Camera stream" />
       </div>
       <div>
         <table id="controltable_in-0"></table>
-        <button onclick="console.log('Save')">Save</button>
+        <button onclick="save()">Save</button>
         <button onclick="reset()">Reset</button>
         <button onclick="restore()">Restore</button>
       </div>
