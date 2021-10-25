@@ -1,4 +1,4 @@
-<html style="overflow-y: auto;">
+<html style="overflow-y: auto; background: #f1f1f1">
   <head>
     <script type="text/javascript" src="jquery.js"></script>
     
@@ -23,6 +23,13 @@
   <style>
       .flex-container {
           display: flex;
+      }
+      button {
+          border-style: none;
+          background: #515151;
+          border-radius: 3px;
+          color: #f1f1f1;
+          padding: 6px 8px;
       }
   </style>
   </head>
@@ -281,8 +288,10 @@
       <div style="padding: 1rem; font-family: Roboto, sans-serif">
         <table id="controltable_in-0" style="margin: 0 0 1rem 0; font-size: 20px; width: 100%"></table>
         <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="save()">Save</button>
-        <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="reset()">Reset</button>
         <button style="font-size: 24px" onclick="restore()">Restore</button>
+      </div>
+      <div style="padding: 1rem; font-family: Roboto, sans-serif">
+        <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="reset()">Reset Factory Defaults</button>
       </div>
     </div>
 
