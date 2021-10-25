@@ -237,16 +237,26 @@
 	    );
 
       function save() {
-        $.post('save')
+        console.log('Saving');
+        // $.post('something?')
       }
       function reset() {
+        console.log('Reset');
+        Object.entries(defaults).forEach(([key, value]) => {
+          const item = originalValues.find((val) => key === val.name);
+          setValue(item, value);
+        })
 
       }
       function restore() {
+        console.log('Restore');
         originalValues.forEach((item) => {
-          $(`#slider-${item.id}`).val(item.value);
-          setControl(0, 0, item.id, item.group, item.value);
+          setValue(item, item.value);
         })
+      }
+      function setValue(item, value) {
+        $(`#slider-${item.id}`).val(value);
+        setControl(0, 0, item.id, item.group, value);
       }
 
     </script>
@@ -258,8 +268,8 @@
       <div>
         <table id="controltable_in-0"></table>
         <button onclick="console.log('Save')">Save</button>
-        <button onclick="console.log('Reset')">Reset</button>
-        <button onclick="console.log('Restore')">Restore</button>
+        <button onclick="reset()">Reset</button>
+        <button onclick="restore()">Restore</button>
       </div>
     </div>
 
