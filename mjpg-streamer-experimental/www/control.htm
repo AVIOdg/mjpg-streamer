@@ -50,6 +50,16 @@
           height: 18px;
           background: #13C4A5;
       }
+      .fill {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      .fill img {
+          flex-shrink: 1;
+          min-width: 100%;
+          max-height: 100%;
+      }
   </style>
   </head>
   <body style="overflow-y: auto; border: 5px solid #515151; border-radius: 5px">
@@ -316,7 +326,7 @@
       <img src="./logo.png" alt="Logo"/>
     </div>
     <div class="flex-container">
-      <div style="margin: 1rem; border: 1px solid black">
+      <div style="margin: 1rem; border: 1px solid black" class="fill">
         <img src="./?action=stream" alt="Camera stream" />
       </div>
       <div style="padding: 1rem; font-family: Roboto, sans-serif">
