@@ -55,10 +55,10 @@
   <body style="overflow-y: auto; border: 5px solid #515151; border-radius: 5px">
     <script type="text/javascript">
       const defaults = {
-        Brightness: 50,
-        Contrast: 50,
-        Saturation: 50,
-        Hue: 50
+        Brightness: 0,
+        Contrast: 128,
+        Saturation: 128,
+        Hue: 0
       };
       let originalValues = [];
 
@@ -270,10 +270,25 @@
 
       function save() {
         console.log('Saving');
-        // $.post('something?')
+        const postValues = {};
+
         originalValues.forEach((item) => {
-          item.value = $(`#slider-${item.id}`).val();
-        })
+          const val = $(`#slider-${item.id}`).val();
+          postValues[item.name] = val;
+          item.value = val;
+        });
+
+        const params = [];
+        if (postValues.Brightness) params.push(`b=${postValues.Brightness}`);
+        if (postValues.Contrast) params.push(`c=${postValues.Contrast}`);
+        if (postValues.Saturation) params.push(`s=${postValues.Saturation}`);
+        if (postValues.Hue) params.push(`h=${postValues.Hue}`);
+
+        if (params.length) {
+          const url = '/cgi-bin/save_capture_settings.sh?' + params.join('&');
+          $.get(url);
+        }
+
       }
       function reset() {
         console.log('Reset');
