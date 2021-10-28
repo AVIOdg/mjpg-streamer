@@ -25,13 +25,22 @@
           .flex-container {
               display: flex;
           }
-          .smaller-text {
+          .text {
+              font-size: 22px;
+          }
+          .text button {
               font-size: 22px;
           }
       }
       @media only screen and (orientation: portrait) {
           tr > td:first-child {
-              width: 120px;
+              width: 200px;
+          }
+          .text {
+              font-size: 24px;
+          }
+          .text button {
+              font-size: 24px;
           }
       }
       button {
@@ -337,11 +346,11 @@
         <img src="./?action=stream" alt="Camera stream" />
       </div>
       <div style="flex-grow: 1; padding: 1rem; font-family: Roboto, sans-serif">
-        <table id="controltable_in-0" style="margin: 0 0 1rem 0; font-size: 24px; width: 100%" class="smaller-text"></table>
-        <div style="display: flex; flex-direction: column">
-          <button class="smaller-text" style="font-size: 24px; margin: 0 0 0.5rem 0" onclick="save()">Save Settings</button>
-          <button class="smaller-text" style="font-size: 24px; margin: 0 0 0.5rem 0" onclick="reset()">Reset to Factory Defaults</button>
-          <button class="smaller-text" style="font-size: 24px" onclick="restore()">Restore Previous Settings</button>
+        <table id="controltable_in-0" style="margin: 0 0 1rem 0; font-size: 24px; width: 100%" class="text"></table>
+        <div style="display: flex; flex-direction: column" class="text">
+          <button style="margin: 0 0 0.5rem 0" onclick="save()">Save Settings</button>
+          <button style="margin: 0 0 0.5rem 0" onclick="reset()">Reset to Factory Defaults</button>
+          <button onclick="restore()">Restore Previous Settings</button>
         </div>
       </div>
     </div>
