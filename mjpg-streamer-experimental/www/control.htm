@@ -23,6 +23,7 @@
   <style>
       .flex-container {
           display: flex;
+          flex-wrap: wrap;
       }
       button {
           border-style: none;
@@ -279,7 +280,6 @@
 	    );
 
       function save() {
-        console.log('Saving');
         const postValues = {};
 
         originalValues.forEach((item) => {
@@ -301,7 +301,6 @@
 
       }
       function reset() {
-        console.log('Reset');
         Object.entries(defaults).forEach(([key, value]) => {
           const item = originalValues.find((val) => key === val.name);
           if (item) {
@@ -311,7 +310,6 @@
 
       }
       function restore() {
-        console.log('Restore');
         originalValues.forEach((item) => {
           setValue(item, item.value);
         })
@@ -326,14 +324,16 @@
       <img src="./logo.png" alt="Logo"/>
     </div>
     <div class="flex-container">
-      <div style="margin: 1rem; border: 1px solid black" class="fill">
+      <div style="flex-grow: 2; margin: 1rem; border: 1px solid black" class="fill">
         <img src="./?action=stream" alt="Camera stream" />
       </div>
-      <div style="padding: 1rem; font-family: Roboto, sans-serif">
+      <div style="flex-grow: 1; padding: 1rem; font-family: Roboto, sans-serif">
         <table id="controltable_in-0" style="margin: 0 0 1rem 0; font-size: 20px; width: 100%"></table>
-        <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="save()">Save</button>
-        <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="reset()">Reset</button>
-        <button style="font-size: 24px" onclick="restore()">Restore</button>
+        <div class="flex-container">
+          <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="save()">Save Settings</button>
+          <button style="font-size: 24px; margin: 0 0.5rem 0 0" onclick="reset()">Reset to Factory Defaults</button>
+          <button style="font-size: 24px" onclick="restore()">Restore Previous Settings</button>
+        </div>
       </div>
     </div>
 
