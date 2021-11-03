@@ -313,7 +313,7 @@
         if (postValues.Hue) params.push(`h=${postValues.Hue}`);
 
         if (params.length) {
-          const url = '/cgi-bin/save_capture_settings.sh?' + params.join('&');
+          const url = 'save_capture_settings.cgi?' + params.join('&');
           $.get(url);
         }
 
