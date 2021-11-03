@@ -337,7 +337,11 @@
         setControl(0, 0, item.id, item.group, value);
       }
       function fullscreen() {
-        $("body").html($.get('/?action=stream'));
+        $("body")
+          .html($("#stream"))
+          .css('border', 'none')
+          .css('margin', '0')
+          .css('border-radius', '0');
       }
 
     </script>
@@ -349,7 +353,7 @@
     </div>
     <div class="flex-container">
       <div style="flex-grow: 2; margin: 1rem; border: 1px solid black" class="fill">
-        <img src="./?action=stream" alt="Camera stream" />
+        <img src="./?action=stream" alt="Camera stream" id="stream" style="height: 100%; width: 100%"/>
       </div>
       <div style="flex-grow: 1; padding: 1rem; font-family: Roboto, sans-serif">
         <table id="controltable_in-0" style="margin: 0 0 1rem 0; font-size: 24px; width: 100%" class="text"></table>
