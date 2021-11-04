@@ -49,6 +49,11 @@
           border-radius: 3px;
           color: #f1f1f1;
           padding: 6px 8px;
+          box-shadow: 2px 3px #000000;
+      }
+      button:active {
+          background: #13C4A5;
+          box-shadow: none;
       }
       .slider {
            -webkit-appearance: none;
@@ -317,6 +322,11 @@
           $.get(url);
         }
 
+        $('#save').html('Saved!');
+
+        setTimeout(() => {
+          $('#save').html('Save Settings')
+        }, 2000);
       }
       function reset() {
         Object.entries(defaults).forEach(([key, value]) => {
@@ -358,7 +368,7 @@
       <div style="flex-grow: 1; padding: 1rem; font-family: Roboto, sans-serif">
         <table id="controltable_in-0" style="margin: 0 0 1rem 0; font-size: 24px; width: 100%" class="text"></table>
         <div style="display: flex; flex-direction: column" class="text">
-          <button style="margin: 0 0 0.5rem 0" onclick="save()">Save Settings</button>
+          <button style="margin: 0 0 0.5rem 0" onclick="save()" id="save">Save Settings</button>
           <button style="margin: 0 0 0.5rem 0" onclick="reset()">Reset to Factory Defaults</button>
           <button onclick="restore()">Restore Previous Settings</button>
         </div>
